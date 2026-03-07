@@ -9,8 +9,8 @@
     --ink: #111;
     --muted: #555;
     --accent: #0b6fa4;      /* bleu - Chirurgie */
-    --accent2: #22b8b8;     /* turquoise - Accent */
-    --accent3: #6c5ce7;     /* violet - Médecine interventionnelle */
+    --accent2: #22b8b8;     /* turquoise - Interaction */
+    --accent3: #6c5ce7;     /* violet - Médecine */
     --accent4: #e67e22;     /* orange - Endoscopie */
     --bg: #f3f5f7;
     --card-bg: #fff;
@@ -26,187 +26,80 @@
     -webkit-font-smoothing: antialiased;
   }
   
+  /* Header fixe */
   .header {
     background: rgba(255, 255, 255, 0.92);
     backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
     border-bottom: 2px solid var(--accent);
     padding: 16px;
     position: sticky;
     top: 0;
-    z-index: 10;
+    z-index: 100;
     box-shadow: 0 4px 16px rgba(0,0,0,0.04);
   }
-  .header-content {
-    max-width: 1000px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-  .header img {
-    width: 60px;
-    height: auto;
-  }
-  .header-text h1 {
-    margin: 0;
-    font-size: 22px;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    color: var(--accent);
-    text-transform: uppercase;
-  }
-  .header-text p {
-    margin: 2px 0 0 0;
-    font-size: 13px;
-    color: var(--muted);
-  }
+  .header-content { max-width: 1000px; margin: 0 auto; display: flex; align-items: center; gap: 16px; }
+  .header img { width: 60px; height: auto; }
+  .header-text h1 { margin: 0; font-size: 20px; font-weight: 800; color: var(--accent); text-transform: uppercase; }
+  .header-text p { margin: 2px 0 0 0; font-size: 13px; color: var(--muted); }
 
-  .container {
-    max-width: 1000px;
-    margin: 24px auto;
-    padding: 0 16px 40px;
-  }
-  
-  .intro {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 24px 30px;
+  .container { max-width: 1000px; margin: 24px auto; padding: 0 16px 40px; }
+
+  /* MODULE INTERACTIF : CHECKLIST DE PRÉPARATION */
+  .checklist-card {
+    background: #fff;
+    border-radius: 16px;
+    border: 2px solid var(--accent2);
+    padding: 24px;
     margin-bottom: 32px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    box-shadow: 0 10px 30px rgba(34, 184, 184, 0.1);
   }
-  .intro h2 {
-    margin: 0 0 12px 0;
-    font-size: 28px;
-    font-weight: 900;
-    color: var(--ink);
-    border-left: 6px solid var(--accent2);
-    padding-left: 14px;
-  }
-  .intro p {
-    margin: 0;
-    color: var(--muted);
-    font-size: 15px;
-  }
-
-  /* Grille adaptative : 3 colonnes sur PC, 1 sur Mobile */
-  .grid {
-    display: grid;
-    gap: 20px;
-    grid-template-columns: 1fr;
-  }
-  @media (min-width: 800px) {
-    .grid {
-      grid-template-columns: 1fr 1fr 1fr;
-    }
-  }
-
-  .card {
-    background: var(--card-bg);
-    border-radius: 12px;
-    border: 1px solid var(--border);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.04);
-    overflow: hidden;
-    transition: box-shadow 0.2s ease;
-  }
-  .card:hover {
-    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-  }
+  .checklist-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+  .checklist-header h3 { margin: 0; font-size: 20px; color: var(--accent); }
   
-  .full-width {
-    grid-column: 1 / -1;
-  }
+  .progress-container { background: #eee; height: 10px; border-radius: 5px; margin-bottom: 25px; overflow: hidden; }
+  #progress-bar { background: linear-gradient(90deg, var(--accent2), var(--accent)); width: 0%; height: 100%; transition: width 0.4s ease; }
 
-  .card-header {
-    padding: 16px 20px;
-    font-weight: 700;
-    font-size: 14px;
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    min-height: 60px;
-  }
-  .card-header.cervical {
-    background: rgba(11, 111, 164, 0.08);
-    color: var(--accent);
-    border-bottom: 2px solid var(--accent);
-  }
-  .card-header.lombaire {
-    background: rgba(34, 184, 184, 0.08);
-    color: #167a7a;
-    border-bottom: 2px solid var(--accent2);
-  }
-  .card-header.endoscopie {
-    background: rgba(230, 126, 34, 0.08);
-    color: var(--accent4);
-    border-bottom: 2px solid var(--accent4);
-  }
-  .card-header.medecine {
-    background: rgba(108, 92, 231, 0.08);
-    color: var(--accent3);
-    border-bottom: 2px solid var(--accent3);
-  }
-  .card-header.pratique {
-    background: #f4f6f8;
-    color: #444;
-    border-bottom: 2px solid #ccc;
-  }
+  .checklist-grid { display: grid; gap: 15px; grid-template-columns: 1fr; }
+  @media (min-width: 600px) { .checklist-grid { grid-template-columns: 1fr 1fr; } }
 
-  .links {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  .check-item {
+    display: flex; align-items: flex-start; gap: 12px; padding: 12px;
+    background: #f9f9f9; border-radius: 8px; cursor: pointer; transition: background 0.2s;
   }
-  .links.grid-links {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-  @media (min-width: 600px) {
-    .links.grid-links {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
+  .check-item:hover { background: #f0f7f7; }
+  .check-item input { width: 20px; height: 20px; cursor: pointer; accent-color: var(--accent2); }
+  .check-item span { font-size: 14px; font-weight: 600; }
+  .check-item small { display: block; color: var(--muted); font-size: 12px; font-weight: 400; margin-top: 2px; }
 
-  .links li {
-    border-bottom: 1px solid #eee;
-  }
+  /* GRILLE DES FICHES */
+  .grid { display: grid; gap: 20px; grid-template-columns: 1fr; }
+  @media (min-width: 800px) { .grid { grid-template-columns: 1fr 1fr 1fr; } }
+
+  .card { background: #fff; border-radius: 12px; border: 1px solid var(--border); overflow: hidden; display: flex; flex-direction: column; }
+  .card-header { padding: 16px 20px; font-weight: 700; font-size: 13px; text-transform: uppercase; min-height: 55px; display: flex; align-items: center; }
+  
+  .card-header.cervical { background: #f0f7fa; color: var(--accent); border-bottom: 2px solid var(--accent); }
+  .card-header.lombaire { background: #f0fafa; color: #167a7a; border-bottom: 2px solid var(--accent2); }
+  .card-header.endoscopie { background: #fef5ed; color: var(--accent4); border-bottom: 2px solid var(--accent4); }
+  .card-header.medecine { background: #f5f4ff; color: var(--accent3); border-bottom: 2px solid var(--accent3); }
+  .card-header.pratique { background: #f4f6f8; color: #444; border-bottom: 2px solid #ccc; }
+
+  .links { list-style: none; margin: 0; padding: 0; flex-grow: 1; }
+  .links li { border-bottom: 1px solid #eee; }
+  .links li:last-child { border-bottom: none; }
   .links a {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px 20px;
-    text-decoration: none;
-    color: var(--ink);
-    font-weight: 500;
-    font-size: 14px;
-    transition: background 0.2s ease, color 0.2s ease;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px 20px; text-decoration: none; color: var(--ink); font-size: 14px; font-weight: 500;
   }
-  .links a:hover {
-    background: #f4f8fb;
-    color: var(--accent);
-  }
-  
-  .links a span.arrow {
-    color: var(--accent2);
-    font-size: 18px;
-    line-height: 1;
-    transition: transform 0.25s ease;
-  }
-  .links a:hover span.arrow {
-    transform: translateX(6px);
-  }
-  
-  footer {
-    text-align: center;
-    margin-top: 20px;
-    padding: 24px 16px;
-    border-top: 1px solid var(--border);
-    color: var(--muted);
-    font-size: 13px;
-    background: white;
-  }
+  .links a:hover { background: #f4f8fb; color: var(--accent); }
+  .links a span.arrow { color: var(--accent2); font-size: 18px; transition: transform 0.2s; }
+  .links a:hover span.arrow { transform: translateX(5px); }
+
+  .full-width { grid-column: 1 / -1; }
+  .grid-links { display: grid; grid-template-columns: 1fr; }
+  @media (min-width: 600px) { .grid-links { grid-template-columns: 1fr 1fr; } }
+
+  footer { text-align: center; padding: 40px 20px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--border); margin-top: 20px; }
 </style>
 </head>
 <body>
@@ -223,9 +116,39 @@
 
   <div class="container">
     
-    <div class="intro">
-      <h2>Vos fiches d'information</h2>
-      <p>Sélectionnez votre parcours pour accéder aux documents d'information pré-opératoire.</p>
+    <div class="checklist-card">
+      <div class="checklist-header">
+        <h3>Ma Préparation Pas à Pas</h3>
+        <span id="status-text" style="font-weight: 800; color: var(--accent2); text-transform: uppercase; font-size: 14px;">0% complété</span>
+      </div>
+      <div class="progress-container"><div id="progress-bar"></div></div>
+      
+      <div class="checklist-grid">
+        <label class="check-item">
+          <input type="checkbox" onchange="updateProgress()">
+          <span>Consultation d'Anesthésie <small>Indispensable au moins 48h avant l'acte</small></span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" onchange="updateProgress()">
+          <span>Dossier d'imagerie <small>IRM, Scanner et Radios à apporter le jour J</small></span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" onchange="updateProgress()">
+          <span>Anticoagulants / Plavix <small>Arrêt ou substitution validé avec l'équipe</small></span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" onchange="updateProgress()">
+          <span>Douche antiseptique <small>Réalisée la veille et le matin même</small></span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" onchange="updateProgress()">
+          <span>Kiné préventive <small>Rendez-vous anticipé pour votre retour</small></span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" onchange="updateProgress()">
+          <span>Je suis à jeun <small>Respect strict des consignes horaires</small></span>
+        </label>
+      </div>
     </div>
 
     <div class="grid">
@@ -244,7 +167,7 @@
         <ul class="links">
           <li><a href="https://raphaeljameson-png.github.io/hernie_discale_lombaire/">Hernie discale lombaire <span class="arrow">→</span></a></li>
           <li><a href="https://raphaeljameson-png.github.io/fiche_information_stenoseminiinvasive/">Sténose (Mini-invasif tubulaire) <span class="arrow">→</span></a></li>
-          <li><a href="https://raphaeljameson-png.github.io/fiche_information_laminectomie_lombaire_open/">Canal Lombaire (Open) <span class="arrow">→</span></a></li>
+          <li><a href="https://raphaeljameson-png.github.io/fiche_information_lamiectomie_lombaire_open/">Canal Lombaire (Open) <span class="arrow">→</span></a></li>
           <li><a href="https://raphaeljameson-png.github.io/fiche_informative_ALIF/">Arthrodèse Antérieure (ALIF) <span class="arrow">→</span></a></li>
           <li><a href="https://raphaeljameson-png.github.io/fiche_prothese_discale_lombaire/">Prothèse discale lombaire <span class="arrow">→</span></a></li>
           <li><a href="https://raphaeljameson-png.github.io/fiche_information_arthrodese_lombaire_posterieure/">Arthrodèse postérieure <span class="arrow">→</span></a></li>
@@ -268,15 +191,26 @@
       </div>
 
       <div class="card full-width">
-        <div class="card-header pratique">Parcours & Informations pratiques</div>
+        <div class="card-header pratique">Parcours & Accompagnement</div>
         <ul class="links grid-links">
+          <li><a href="https://raphaeljameson-png.github.io/mon_parcours_interactif/"><strong>Mon Parcours Interactif</strong> (Outil de suivi) <span class="arrow">→</span></a></li>
           <li><a href="https://raphaeljameson-png.github.io/livret-transversal/">Guide Pratique : Préparer mon intervention <span class="arrow">→</span></a></li>
-          <li><a href="https://forms.gle/ncnQMr6ekrokkELe9" target="_blank"><strong>Suggérer une amélioration</strong> <span class="arrow">📝</span></a></li>
+          <li><a href="https://forms.gle/ncnQMr6ekrokkELe9" target="_blank">Suggérer une amélioration / Feedback <span class="arrow">📝</span></a></li>
         </ul>
       </div>
 
     </div>
   </div>
+
+  <script>
+    function updateProgress() {
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      const checked = document.querySelectorAll('input[type="checkbox"]:checked');
+      const percentage = Math.round((checked.length / checkboxes.length) * 100);
+      document.getElementById('progress-bar').style.width = percentage + '%';
+      document.getElementById('status-text').innerText = percentage + '% complété';
+    }
+  </script>
 
   <footer>
     95, rue de Prony — 75017 Paris | <a href="http://www.rachis.paris" target="_blank" style="color:var(--accent); text-decoration:none; font-weight:bold;">www.rachis.paris</a>
