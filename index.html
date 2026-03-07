@@ -8,9 +8,10 @@
   :root {
     --ink: #111;
     --muted: #555;
-    --accent: #0b6fa4;      /* bleu */
-    --accent2: #22b8b8;     /* turquoise */
-    --accent3: #6c5ce7;     /* violet médecine */
+    --accent: #0b6fa4;      /* bleu - Chirurgie */
+    --accent2: #22b8b8;     /* turquoise - Accent */
+    --accent3: #6c5ce7;     /* violet - Médecine interventionnelle */
+    --accent4: #e67e22;     /* orange - Endoscopie */
     --bg: #f3f5f7;
     --card-bg: #fff;
     --border: #d9d9d9;
@@ -25,7 +26,6 @@
     -webkit-font-smoothing: antialiased;
   }
   
-  /* En-tête fixe style application (Effet verre dépoli) */
   .header {
     background: rgba(255, 255, 255, 0.92);
     backdrop-filter: blur(8px);
@@ -38,7 +38,7 @@
     box-shadow: 0 4px 16px rgba(0,0,0,0.04);
   }
   .header-content {
-    max-width: 850px;
+    max-width: 1000px;
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -63,12 +63,11 @@
   }
 
   .container {
-    max-width: 850px;
+    max-width: 1000px;
     margin: 24px auto;
     padding: 0 16px 40px;
   }
   
-  /* Introduction style "Fiche" */
   .intro {
     background: var(--card-bg);
     border: 1px solid var(--border);
@@ -91,14 +90,15 @@
     font-size: 15px;
   }
 
+  /* Grille adaptative : 3 colonnes sur PC, 1 sur Mobile */
   .grid {
     display: grid;
     gap: 20px;
     grid-template-columns: 1fr;
   }
-  @media (min-width: 600px) {
+  @media (min-width: 800px) {
     .grid {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
     }
   }
 
@@ -121,11 +121,12 @@
   .card-header {
     padding: 16px 20px;
     font-weight: 700;
-    font-size: 15px;
+    font-size: 14px;
     text-transform: uppercase;
     display: flex;
     align-items: center;
     gap: 10px;
+    min-height: 60px;
   }
   .card-header.cervical {
     background: rgba(11, 111, 164, 0.08);
@@ -136,6 +137,11 @@
     background: rgba(34, 184, 184, 0.08);
     color: #167a7a;
     border-bottom: 2px solid var(--accent2);
+  }
+  .card-header.endoscopie {
+    background: rgba(230, 126, 34, 0.08);
+    color: var(--accent4);
+    border-bottom: 2px solid var(--accent4);
   }
   .card-header.medecine {
     background: rgba(108, 92, 231, 0.08);
@@ -170,10 +176,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 18px 20px;
+    padding: 16px 20px;
     text-decoration: none;
     color: var(--ink);
     font-weight: 500;
+    font-size: 14px;
     transition: background 0.2s ease, color 0.2s ease;
   }
   .links a:hover {
@@ -183,7 +190,7 @@
   
   .links a span.arrow {
     color: var(--accent2);
-    font-size: 20px;
+    font-size: 18px;
     line-height: 1;
     transition: transform 0.25s ease;
   }
@@ -191,12 +198,6 @@
     transform: translateX(6px);
   }
   
-  .links a.disabled {
-    color: #aaa;
-    pointer-events: none;
-    background: #fafafa;
-  }
-
   footer {
     text-align: center;
     margin-top: 20px;
@@ -242,12 +243,19 @@
         <div class="card-header lombaire">Chirurgie Lombaire</div>
         <ul class="links">
           <li><a href="https://raphaeljameson-png.github.io/hernie_discale_lombaire/">Hernie discale lombaire <span class="arrow">→</span></a></li>
-          <li><a href="https://raphaeljameson-png.github.io/fiche_UBE_endoscopie_rachis/">Sténose (Mini-invasif/Endo) <span class="arrow">→</span></a></li>
-          <li><a href="https://raphaeljameson-png.github.io/fiche_information_laminectomie_lombaire_open/">Canal Lombaire (Laminectomie Open) <span class="arrow">→</span></a></li>
+          <li><a href="https://raphaeljameson-png.github.io/fiche_information_stenoseminiinvasive/">Sténose (Mini-invasif tubulaire) <span class="arrow">→</span></a></li>
+          <li><a href="https://raphaeljameson-png.github.io/fiche_information_laminectomie_lombaire_open/">Canal Lombaire (Open) <span class="arrow">→</span></a></li>
           <li><a href="https://raphaeljameson-png.github.io/fiche_informative_ALIF/">Arthrodèse Antérieure (ALIF) <span class="arrow">→</span></a></li>
           <li><a href="https://raphaeljameson-png.github.io/fiche_prothese_discale_lombaire/">Prothèse discale lombaire <span class="arrow">→</span></a></li>
           <li><a href="https://raphaeljameson-png.github.io/fiche_information_arthrodese_lombaire_posterieure/">Arthrodèse postérieure <span class="arrow">→</span></a></li>
           <li><a href="https://raphaeljameson-png.github.io/ficheinformation_cimentoplastie_spinejack/">Cimentoplastie (Spinejack) <span class="arrow">→</span></a></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header endoscopie">Chirurgie Endoscopique</div>
+        <ul class="links">
+          <li><a href="https://raphaeljameson-png.github.io/fiche_UBE_endoscopie_rachis/">Endoscopie Biportale (UBE) <span class="arrow">→</span></a></li>
         </ul>
       </div>
 
@@ -262,7 +270,7 @@
       <div class="card full-width">
         <div class="card-header pratique">Parcours & Informations pratiques</div>
         <ul class="links grid-links">
-          <li><a href="https://raphaeljameson-png.github.io/Livret_transversal/">Guide Pratique : Préparer mon intervention en toute sérénité <span class="arrow">→</span></a></li>
+          <li><a href="https://raphaeljameson-png.github.io/livret-transversal/">Guide Pratique : Préparer mon intervention <span class="arrow">→</span></a></li>
           <li><a href="https://forms.gle/ncnQMr6ekrokkELe9" target="_blank"><strong>Suggérer une amélioration</strong> <span class="arrow">📝</span></a></li>
         </ul>
       </div>
