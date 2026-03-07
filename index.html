@@ -159,4 +159,120 @@
   }
   @media (min-width: 600px) {
     .links.grid-links {
-      grid-template-columns: 1fr 1fr
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .links li {
+    border-bottom: 1px solid #eee;
+  }
+  .links a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 20px;
+    text-decoration: none;
+    color: var(--ink);
+    font-weight: 500;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .links a:hover {
+    background: #f4f8fb;
+    color: var(--accent);
+  }
+  
+  .links a span.arrow {
+    color: var(--accent2);
+    font-size: 20px;
+    line-height: 1;
+    transition: transform 0.25s ease;
+  }
+  .links a:hover span.arrow {
+    transform: translateX(6px);
+  }
+  
+  .links a.disabled {
+    color: #aaa;
+    pointer-events: none;
+    background: #fafafa;
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 20px;
+    padding: 24px 16px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 13px;
+    background: white;
+  }
+</style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-content">
+      <img src="logo.png" alt="Logo">
+      <div class="header-text">
+        <h1>Espace Francilien du Rachis</h1>
+        <p>Dr Jameson · Dr Lamerain · Dr Travert</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    
+    <div class="intro">
+      <h2>Vos fiches d'information</h2>
+      <p>Sélectionnez votre parcours pour accéder aux documents d'information pré-opératoire.</p>
+    </div>
+
+    <div class="grid">
+      
+      <div class="card">
+        <div class="card-header cervical">Chirurgie Cervicale</div>
+        <ul class="links">
+          <li><a href="https://raphaeljameson-png.github.io/fiche-information-ACDF/">Arthrodèse Antérieure (ACDF) <span class="arrow">→</span></a></li>
+          <li><a href="https://raphaeljameson-png.github.io/prothese_discale_cervciale/">Prothèse Discale Cervicale <span class="arrow">→</span></a></li>
+          <li><a href="https://raphaeljameson-png.github.io/dfiche_information_lamiectomie_cervicale/">Canal cervical / Myélopathie <span class="arrow">→</span></a></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header lombaire">Chirurgie Lombaire</div>
+        <ul class="links">
+          <li><a href="https://raphaeljameson-png.github.io/hernie_discale_lombaire/">Hernie discale lombaire <span class="arrow">→</span></a></li>
+          <li><a href="https://raphaeljameson-png.github.io/fiche_UBE_endoscopie_rachis/">Sténose (Mini-invasif/Endo) <span class="arrow">→</span></a></li>
+          <li><a href="https://raphaeljameson-png.github.io/fiche_information_laminectomie_lombaire_open/">Canal Lombaire (Laminectomie Open) <span class="arrow">→</span></a></li>
+          <li><a href="https://raphaeljameson-png.github.io/fiche_informative_ALIF/">Arthrodèse Antérieure (ALIF) <span class="arrow">→</span></a></li>
+          <li><a href="https://raphaeljameson-png.github.io/fiche_prothese_discale_lombaire/">Prothèse discale lombaire <span class="arrow">→</span></a></li>
+          <li><a href="https://raphaeljameson-png.github.io/fiche_information_arthrodese_lombaire_posterieure/">Arthrodèse postérieure <span class="arrow">→</span></a></li>
+          <li><a href="https://raphaeljameson-png.github.io/ficheinformation_cimentoplastie_spinejack/">Cimentoplastie (Spinejack) <span class="arrow">→</span></a></li>
+        </ul>
+      </div>
+
+      <div class="card full-width">
+        <div class="card-header medecine">Médecine Interventionnelle (Radiologie / Rhumatologie)</div>
+        <ul class="links grid-links">
+          <li><a href="https://raphaeljameson-png.github.io/fiche_information_neurolyselombaire/">Neurolyse (Thermocoagulation) <span class="arrow">→</span></a></li>
+          <li><a href="https://raphaeljameson-png.github.io/fiche_information_infiltrations/">Infiltrations rachidiennes <span class="arrow">→</span></a></li>
+        </ul>
+      </div>
+
+      <div class="card full-width">
+        <div class="card-header pratique">Parcours & Informations pratiques</div>
+        <ul class="links grid-links">
+          <li><a href="https://raphaeljameson-png.github.io/Livret_transversal/">Guide Pratique : Préparer mon intervention en toute sérénité <span class="arrow">→</span></a></li>
+          <li><a href="https://forms.gle/ncnQMr6ekrokkELe9" target="_blank"><strong>Suggérer une amélioration</strong> <span class="arrow">📝</span></a></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    95, rue de Prony — 75017 Paris | <a href="http://www.rachis.paris" target="_blank" style="color:var(--accent); text-decoration:none; font-weight:bold;">www.rachis.paris</a>
+  </footer>
+
+</body>
+</html>
