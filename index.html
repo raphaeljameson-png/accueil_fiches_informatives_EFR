@@ -24,7 +24,7 @@
     -webkit-font-smoothing: antialiased;
   }
   
-  /* En-tête fixe style application (Effet verre dépoli harmonisé avec les fiches) */
+  /* En-tête fixe style application (Effet verre dépoli) */
   .header {
     background: rgba(255, 255, 255, 0.92);
     backdrop-filter: blur(8px);
@@ -61,14 +61,12 @@
     color: var(--muted);
   }
 
-  /* Conteneur principal */
   .container {
     max-width: 800px;
     margin: 24px auto;
     padding: 0 16px 40px;
   }
   
-  /* Introduction harmonisée avec le style des titres des fiches */
   .intro {
     background: var(--card-bg);
     border: 1px solid var(--border);
@@ -82,7 +80,7 @@
     font-size: 26px;
     font-weight: 800;
     color: var(--ink);
-    border-left: 6px solid var(--accent2); /* Le marqueur visuel de vos fiches */
+    border-left: 6px solid var(--accent2);
     padding-left: 14px;
   }
   .intro p {
@@ -91,7 +89,6 @@
     font-size: 15px;
   }
 
-  /* Grille des catégories */
   .grid {
     display: grid;
     gap: 24px;
@@ -103,7 +100,6 @@
     }
   }
 
-  /* Cartes de catégories */
   .card {
     background: var(--card-bg);
     border-radius: 12px;
@@ -146,7 +142,6 @@
     border-bottom: 2px solid #ffc107;
   }
 
-  /* Liste des boutons (Fiches) */
   .links {
     list-style: none;
     margin: 0;
@@ -173,15 +168,14 @@
     color: var(--accent);
   }
   
-  /* Animation des flèches */
   .links a span.arrow {
     color: var(--accent2);
     font-size: 20px;
     line-height: 1;
-    transition: transform 0.25s ease; /* Prépare l'animation */
+    transition: transform 0.25s ease;
   }
   .links a:hover span.arrow {
-    transform: translateX(6px); /* Glisse vers la droite au survol */
+    transform: translateX(6px);
   }
   
   .links a.disabled {
@@ -195,13 +189,11 @@
     transform: none;
   }
   
-  /* Style spécifique pour le bouton formulaire */
   .links a.email-btn span.arrow {
     color: #ffc107;
     font-size: 24px;
   }
 
-  /* Pied de page harmonisé */
   footer {
     text-align: center;
     margin-top: 20px;
@@ -215,9 +207,6 @@
     color: var(--accent);
     text-decoration: none;
     font-weight: bold;
-  }
-  footer a:hover {
-    text-decoration: underline;
   }
 </style>
 </head>
@@ -278,6 +267,9 @@
           </li>
           <li>
             <a href="https://raphaeljameson-png.github.io/fiche_information_neurolyselombaire/">Neurolyse lombaire (Thermocoagulation) <span class="arrow">→</span></a>
+          </li>
+          <li>
+            <a href="https://raphaeljameson-png.github.io/ficheinformation_cimentoplastie_spinejack/">Cimentoplastie (Spinejack) <span class="arrow">→</span></a>
           </li>
         </ul>
       </div>
