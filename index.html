@@ -26,11 +26,10 @@
     -webkit-font-smoothing: antialiased;
   }
   
-  /* En-tête */
   .header {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(8px);
-    border-bottom: 3px solid var(--accent2); /* Accent sur l'interactivité */
+    border-bottom: 3px solid var(--accent2);
     padding: 16px;
     position: sticky;
     top: 0;
@@ -44,7 +43,7 @@
 
   .container { max-width: 1000px; margin: 24px auto; padding: 0 16px 40px; }
 
-  /* --- BLOC PRIORITAIRE : MON PARCOURS INTERACTIF --- */
+  /* --- MODULE INTERACTIF : MON PARCOURS --- */
   .dashboard {
     background: #fff;
     border-radius: 20px;
@@ -63,7 +62,7 @@
   .progress-wrapper { margin-top: 20px; }
   .progress-info { display: flex; justify-content: space-between; font-size: 14px; font-weight: 800; color: var(--accent2); margin-bottom: 10px; text-transform: uppercase; }
   .progress-bar-bg { background: #eee; height: 12px; border-radius: 6px; overflow: hidden; }
-  #progress-fill { background: linear-gradient(90deg, var(--accent2), var(--accent)); width: 0%; height: 100%; transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+  #progress-fill { background: linear-gradient(90deg, var(--accent2), var(--accent)); width: 0%; height: 100%; transition: width 0.5s ease; }
 
   .tabs { display: flex; background: #f8f9fa; border-bottom: 1px solid #eee; overflow-x: auto; }
   .tab-btn {
@@ -73,9 +72,8 @@
   }
   .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); background: #fff; }
 
-  .tab-content { padding: 30px; display: none; animation: fadeIn 0.3s ease-in; }
+  .tab-content { padding: 30px; display: none; }
   .tab-content.active { display: block; }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
 
   .check-grid { display: grid; gap: 16px; grid-template-columns: 1fr; }
   @media (min-width: 700px) { .check-grid { grid-template-columns: 1fr 1fr; } }
@@ -95,7 +93,7 @@
   .grid { display: grid; gap: 20px; grid-template-columns: 1fr; }
   @media (min-width: 800px) { .grid { grid-template-columns: 1fr 1fr 1fr; } }
 
-  .card { background: #fff; border-radius: 16px; border: 1px solid var(--border); overflow: hidden; transition: 0.3s; }
+  .card { background: #fff; border-radius: 16px; border: 1px solid var(--border); overflow: hidden; transition: 0.3s; display: flex; flex-direction: column; }
   .card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
   .card-header { padding: 18px 20px; font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; }
   
@@ -105,7 +103,7 @@
   .card-header.medecine { background: #f5f4ff; color: var(--accent3); border-bottom: 3px solid var(--accent3); }
   .card-header.pratique { background: #f4f6f8; color: #444; border-bottom: 3px solid #ccc; }
 
-  .links { list-style: none; margin: 0; padding: 0; }
+  .links { list-style: none; margin: 0; padding: 0; flex-grow: 1; }
   .links a {
     display: flex; justify-content: space-between; align-items: center;
     padding: 16px 20px; text-decoration: none; color: var(--ink); font-size: 14px; font-weight: 600; border-bottom: 1px solid #f0f0f0;
@@ -158,19 +156,19 @@
         <div class="check-grid">
           <label class="check-item">
             <input type="checkbox" onchange="updateProgress()">
-            <div class="check-item-text">Bilan d'imagerie complet <small>Scanner, IRM et Radios dynamiques à jour </small></div>
+            <div class="check-item-text">Bilan d'imagerie complet <small>Scanner, IRM et Radiographies à jour</small></div>
           </label>
           <label class="check-item">
             <input type="checkbox" onchange="updateProgress()">
-            <div class="check-item-text">Consultation d'Anesthésie <small>Réalisée obligatoirement au moins 48h avant l'acte [cite: 35]</small></div>
+            <div class="check-item-text">Consultation d'Anesthésie <small>Réalisée obligatoirement au moins 48h avant l'acte</small></div>
           </label>
           <label class="check-item">
             <input type="checkbox" onchange="updateProgress()">
-            <div class="check-item-text">Gestion des Anticoagulants <small>Protocole d'arrêt ou substitution validé [cite: 51]</small></div>
+            <div class="check-item-text">Gestion des Anticoagulants <small>Protocole d'arrêt ou substitution validé par l'équipe</small></div>
           </label>
           <label class="check-item">
             <input type="checkbox" onchange="updateProgress()">
-            <div class="check-item-text">Bilan Sanguin <small>Prise de sang faite selon ordonnance pré-op</small></div>
+            <div class="check-item-text">Bilan Sanguin <small>Prise de sang effectuée selon l'ordonnance pré-opératoire</small></div>
           </label>
         </div>
       </div>
@@ -179,15 +177,15 @@
         <div class="check-grid">
           <label class="check-item">
             <input type="checkbox" onchange="updateProgress()">
-            <div class="check-item-text">Douche antiseptique <small>Soir et matin même avec le savon prescrit</small></div>
+            <div class="check-item-text">Douche antiseptique <small>Réalisée le soir et le matin même avec le savon prescrit</small></div>
           </label>
           <label class="check-item">
             <input type="checkbox" onchange="updateProgress()">
-            <div class="check-item-text">Jeûne strict <small>Zéro nourriture et boisson selon consignes</small></div>
+            <div class="check-item-text">Jeûne strict <small>Respect des consignes (zéro nourriture ni boisson)</small></div>
           </label>
           <label class="check-item">
             <input type="checkbox" onchange="updateProgress()">
-            <div class="check-item-text">Dossier administratif <small>Consentement éclairé et fiches d'info signés</small></div>
+            <div class="check-item-text">Dossier administratif <small>Consentement éclairé et fiches d'information signés</small></div>
           </label>
         </div>
       </div>
@@ -196,15 +194,15 @@
         <div class="check-grid">
           <label class="check-item">
             <input type="checkbox" onchange="updateProgress()">
-            <div class="check-item-text">Premier lever et marche <small>Effectués dès le lendemain matin avec le kiné </small></div>
+            <div class="check-item-text">Premier lever et marche <small>Effectués dès le lendemain matin avec le kinésithérapeute</small></div>
           </label>
           <label class="check-item">
             <input type="checkbox" onchange="updateProgress()">
-            <div class="check-item-text">Éducation motrice <small>Apprentissage des gestes protecteurs (lever en bloc) [cite: 49]</small></div>
+            <div class="check-item-text">Éducation motrice <small>Apprentissage des gestes de sécurité (lever "en bloc")</small></div>
           </label>
           <label class="check-item">
             <input type="checkbox" onchange="updateProgress()">
-            <div class="check-item-text">Surveillance du drainage <small>Ablation prévue avant la sortie [cite: 54]</small></div>
+            <div class="check-item-text">Surveillance et Drainage <small>Surveillance constante avant ablation du drain et sortie</small></div>
           </label>
         </div>
       </div>
@@ -213,15 +211,15 @@
         <div class="check-grid">
           <label class="check-item">
             <input type="checkbox" onchange="updateProgress()">
-            <div class="check-item-text">Soins de cicatrice <small>Pansement à domicile par IDE (tous les 2-3 j)</small></div>
+            <div class="check-item-text">Soins de cicatrice <small>Pansement à domicile par infirmière (tous les 2-3 jours)</small></div>
           </label>
           <label class="check-item">
             <input type="checkbox" onchange="updateProgress()">
-            <div class="check-item-text">Marche progressive <small>Objectif : retrouver son périmètre de marche [cite: 57]</small></div>
+            <div class="check-item-text">Marche progressive <small>Objectif : restaurer progressivement votre périmètre de marche</small></div>
           </label>
           <label class="check-item">
             <input type="checkbox" onchange="updateProgress()">
-            <div class="check-item-text">Visite de contrôle <small>Consultation planifiée pour la consolidation [cite: 83]</small></div>
+            <div class="check-item-text">Visite de contrôle <small>Consultation de suivi planifiée pour valider la consolidation</small></div>
           </label>
         </div>
       </div>
