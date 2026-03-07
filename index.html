@@ -10,6 +10,7 @@
     --muted: #555;
     --accent: #0b6fa4;      /* bleu */
     --accent2: #22b8b8;     /* turquoise */
+    --accent3: #6c5ce7;     /* violet pour la médecine interventionnelle */
     --bg: #f3f5f7;
     --card-bg: #fff;
     --border: #d9d9d9;
@@ -24,7 +25,7 @@
     -webkit-font-smoothing: antialiased;
   }
   
-  /* En-tête fixe style application (Effet verre dépoli) */
+  /* En-tête fixe style application */
   .header {
     background: rgba(255, 255, 255, 0.92);
     backdrop-filter: blur(8px);
@@ -37,7 +38,7 @@
     box-shadow: 0 4px 16px rgba(0,0,0,0.04);
   }
   .header-content {
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -62,7 +63,7 @@
   }
 
   .container {
-    max-width: 800px;
+    max-width: 1100px; /* Élargi pour accueillir 3 colonnes */
     margin: 24px auto;
     padding: 0 16px 40px;
   }
@@ -91,12 +92,12 @@
 
   .grid {
     display: grid;
-    gap: 24px;
+    gap: 20px;
     grid-template-columns: 1fr;
   }
-  @media (min-width: 600px) {
+  @media (min-width: 768px) {
     .grid {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr; /* Passage à 3 colonnes */
     }
   }
 
@@ -107,6 +108,8 @@
     box-shadow: 0 6px 16px rgba(0,0,0,0.04);
     overflow: hidden;
     transition: box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
   }
   .card:hover {
     box-shadow: 0 8px 24px rgba(0,0,0,0.08);
@@ -115,16 +118,22 @@
   .card-header {
     padding: 16px 20px;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 14px;
     text-transform: uppercase;
     display: flex;
     align-items: center;
     gap: 10px;
+    min-height: 60px;
   }
   .card-header.cervical {
     background: rgba(11, 111, 164, 0.08);
     color: var(--accent);
     border-bottom: 2px solid var(--accent);
+  }
+  .card-header.medecine {
+    background: rgba(108, 92, 231, 0.08);
+    color: var(--accent3);
+    border-bottom: 2px solid var(--accent3);
   }
   .card-header.lombaire {
     background: rgba(34, 184, 184, 0.08);
@@ -146,6 +155,7 @@
     list-style: none;
     margin: 0;
     padding: 0;
+    flex-grow: 1;
   }
   .links li {
     border-bottom: 1px solid #eee;
@@ -157,10 +167,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 18px 20px;
+    padding: 16px 20px;
     text-decoration: none;
     color: var(--ink);
     font-weight: 500;
+    font-size: 14px;
     transition: background 0.2s ease, color 0.2s ease;
   }
   .links a:hover, .links a:active {
@@ -170,7 +181,7 @@
   
   .links a span.arrow {
     color: var(--accent2);
-    font-size: 20px;
+    font-size: 18px;
     line-height: 1;
     transition: transform 0.25s ease;
   }
@@ -226,7 +237,7 @@
     
     <div class="intro">
       <h2>Vos fiches d'information</h2>
-      <p>Sélectionnez l'intervention qui vous concerne pour lire, télécharger ou imprimer votre fiche détaillée.</p>
+      <p>Sélectionnez votre parcours pour accéder aux informations détaillées.</p>
     </div>
 
     <div class="grid">
@@ -237,13 +248,30 @@
         </div>
         <ul class="links">
           <li>
-            <a href="https://raphaeljameson-png.github.io/fiche-information-ACDF/">Arthrodèse Cervicale Antérieure (ACDF) <span class="arrow">→</span></a>
+            <a href="https://raphaeljameson-png.github.io/fiche-information-ACDF/">Arthrodèse Antérieure (ACDF) <span class="arrow">→</span></a>
           </li>
           <li>
             <a href="https://raphaeljameson-png.github.io/prothese_discale_cervciale/">Prothèse Discale Cervicale <span class="arrow">→</span></a>
           </li>
           <li>
-            <a href="https://raphaeljameson-png.github.io/dfiche_information_lamiectomie_cervicale/">Canal cervical étroit (voie postérieure) <span class="arrow">→</span></a>
+            <a href="https://raphaeljameson-png.github.io/dfiche_information_lamiectomie_cervicale/">Canal cervical / Myélopathie <span class="arrow">→</span></a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header medecine">
+          Médecine Interventionnelle
+        </div>
+        <ul class="links">
+          <li>
+            <a href="https://raphaeljameson-png.github.io/fiche_information_neurolyselombaire/">Neurolyse (Thermocoagulation) <span class="arrow">→</span></a>
+          </li>
+          <li>
+            <a href="#" class="disabled">Infiltrations rachidiennes <em>(À venir)</em> <span class="arrow">⏳</span></a>
+          </li>
+          <li>
+            <a href="https://raphaeljameson-png.github.io/ficheinformation_cimentoplastie_spinejack/">Cimentoplastie (Spinejack) <span class="arrow">→</span></a>
           </li>
         </ul>
       </div>
@@ -254,28 +282,22 @@
         </div>
         <ul class="links">
           <li>
-            <a href="https://raphaeljameson-png.github.io/fiche_informative_ALIF/">Arthrodèse Lombaire Antérieure (ALIF) <span class="arrow">→</span></a>
+            <a href="https://raphaeljameson-png.github.io/fiche_informative_ALIF/">Arthrodèse Antérieure (ALIF) <span class="arrow">→</span></a>
           </li>
           <li>
             <a href="https://raphaeljameson-png.github.io/fiche_prothese_discale_lombaire/">Prothèse discale lombaire <span class="arrow">→</span></a>
           </li>
           <li>
-            <a href="https://raphaeljameson-png.github.io/fiche_information_arthrodese_lombaire_posterieure/">Arthrodèse postérieure mini-invasive <span class="arrow">→</span></a>
+            <a href="https://raphaeljameson-png.github.io/fiche_information_arthrodese_lombaire_posterieure/">Arthrodèse postérieure <span class="arrow">→</span></a>
           </li>
           <li>
-            <a href="https://raphaeljameson-png.github.io/hernie_discale_lombaire/">Chirurgie de la Hernie discale <span class="arrow">→</span></a>
+            <a href="https://raphaeljameson-png.github.io/hernie_discale_lombaire/">Hernie discale lombaire <span class="arrow">→</span></a>
           </li>
           <li>
-            <a href="https://raphaeljameson-png.github.io/fiche_information_stenoseminiinvasive/">Sténose Lombaire (Mini-invasif/Endo) <span class="arrow">→</span></a>
+            <a href="https://raphaeljameson-png.github.io/fiche_information_stenoseminiinvasive/">Sténose (Mini-invasif/Endo) <span class="arrow">→</span></a>
           </li>
           <li>
-            <a href="https://raphaeljameson-png.github.io/fiche_information_canal_lombaire_etroit/">Canal Lombaire Étroit (Recalibrage) <span class="arrow">→</span></a>
-          </li>
-          <li>
-            <a href="https://raphaeljameson-png.github.io/fiche_information_neurolyselombaire/">Neurolyse lombaire (Thermocoagulation) <span class="arrow">→</span></a>
-          </li>
-          <li>
-            <a href="https://raphaeljameson-png.github.io/ficheinformation_cimentoplastie_spinejack/">Cimentoplastie (Spinejack) <span class="arrow">→</span></a>
+            <a href="https://raphaeljameson-png.github.io/fiche_information_canal_lombaire_etroit/">Canal Lombaire (Recalibrage) <span class="arrow">→</span></a>
           </li>
         </ul>
       </div>
@@ -286,24 +308,12 @@
         </div>
         <ul class="links">
           <li>
-            <a href="#" class="disabled">Les Infiltrations rachidiennes <em>(À venir)</em> <span class="arrow">⏳</span></a>
-          </li>
-          <li>
             <a href="#" class="disabled">Livret de préparation à la chirurgie <em>(À venir)</em> <span class="arrow">⏳</span></a>
           </li>
-        </ul>
-      </div>
-
-      <div class="card" style="grid-column: 1 / -1;">
-        <div class="card-header feedback">
-          Votre avis compte
-        </div>
-        <ul class="links">
           <li>
             <a href="https://forms.gle/ncnQMr6ekrokkELe9" target="_blank" class="email-btn">
               <div>
-                <strong>Suggérer une amélioration</strong><br>
-                <span style="font-size: 13px; color: var(--muted); font-weight: normal;">Un petit questionnaire rapide pour nous aider à rendre ces fiches encore plus claires.</span>
+                <strong>Votre avis compte</strong> — Suggérer une amélioration
               </div>
               <span class="arrow">📝</span>
             </a>
