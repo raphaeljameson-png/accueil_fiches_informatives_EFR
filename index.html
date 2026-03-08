@@ -3,7 +3,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" name="viewport"/>
-<title>Espace Patient — Espace Francilien du Rachis</title>
+<title>Espace Patient : Fiches d'Information | Espace Francilien du Rachis</title>
+<meta name="description" content="Portail patient de l'Espace Francilien du Rachis. Retrouvez votre parcours de soins, le guide pratique et toutes les fiches d'information sur les chirurgies et la rééducation."/>
+<link rel="canonical" href="https://raphaeljameson-png.github.io/espace-patient-rachis/" />
+
 <style>
   :root {
     --ink: #111;
@@ -11,7 +14,8 @@
     --accent: #0b6fa4;
     --accent2: #22b8b8;
     --accent3: #6c5ce7;
-    --accent4: #e67e22;
+    --accent4: #e67e22; /* orange endoscopie */
+    --accent5: #2e7d32; /* vert rééducation */
     --bg: #f3f5f7;
     --card-bg: #fff;
     --border: #d9d9d9;
@@ -44,6 +48,19 @@
   .header-text p { margin: 0; font-size: 11px; color: var(--muted); font-weight: 600; }
 
   .container { max-width: 1000px; margin: 16px auto; padding: 0 12px 40px; }
+
+  /* H1 invisible pour le SEO mais sémantiquement correct */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
 
   /* --- DASHBOARD OPTIMISÉ IPHONE --- */
   .dashboard {
@@ -121,7 +138,7 @@
   .card-header.lombaire { background: #f0fafa; color: #167a7a; border-bottom: 3px solid var(--accent2); }
   .card-header.endoscopie { background: #fef5ed; color: var(--accent4); border-bottom: 3px solid var(--accent4); }
   .card-header.medecine { background: #f5f4ff; color: var(--accent3); border-bottom: 3px solid var(--accent3); }
-  .card-header.pratique { background: #f4f6f8; color: #444; border-bottom: 3px solid #ccc; }
+  .card-header.reeducation { background: rgba(46, 125, 50, 0.1); color: var(--accent5); border-bottom: 3px solid var(--accent5); } /* Nouveau style Rééducation */
 
   .links a {
     display: flex; justify-content: space-between; align-items: center;
@@ -139,17 +156,19 @@
 </head>
 <body>
 
+  <h1 class="sr-only">Espace Patient de l'Espace Francilien du Rachis</h1>
+
   <header class="header">
     <div class="header-content">
-      <img src="logo.png" alt="Logo">
+      <img src="logo.png" alt="Logo de l'Espace Francilien du Rachis">
       <div class="header-text">
-        <h1>Espace Francilien du Rachis</h1>
+        <div style="margin: 0; font-size: 17px; font-weight: 800; color: var(--accent); text-transform: uppercase; letter-spacing: 0.5px;">Espace Francilien du Rachis</div>
         <p>Expertise & Accompagnement Patient</p>
       </div>
     </div>
   </header>
 
-  <div class="container">
+  <main class="container">
     
     <div class="dashboard">
       <div class="dashboard-header">
@@ -248,7 +267,8 @@
       <div class="arrow">→</div>
     </a>
 
-    <div class="section-title">Fiches d'Information</div>
+    <h2 class="section-title">Fiches d'Information Médicale</h2>
+    
     <div class="grid">
       <div class="card">
         <div class="card-header cervical">Cervical</div>
@@ -280,6 +300,13 @@
       </div>
 
       <div class="card full-width">
+        <div class="card-header reeducation">Rééducation & Suites Opératoires</div>
+        <nav class="links grid-links">
+          <a href="https://raphaeljameson-png.github.io/quelle_reeducation_apres_chirurgie_lombaire/">Guide Rééducation Lombaire <span>→</span></a>
+        </nav>
+      </div>
+
+      <div class="card full-width">
         <div class="card-header medecine">Médecine Interventionnelle</div>
         <nav class="links grid-links">
           <a href="https://raphaeljameson-png.github.io/fiche_information_neurolyselombaire/">Neurolyse <span>→</span></a>
@@ -287,7 +314,7 @@
         </nav>
       </div>
     </div>
-  </div>
+  </main>
 
   <script>
     function openTab(evt, phaseName) {
@@ -314,7 +341,7 @@
 
   <footer>
     95, rue de Prony — 75017 Paris<br>
-    <a href="http://www.rachis.paris" target="_blank" style="color:var(--accent); text-decoration:none; font-weight:bold;">www.rachis.paris</a>
+    <a href="http://www.rachis.paris" target="_blank" rel="noopener noreferrer" style="color:var(--accent); text-decoration:none; font-weight:bold;">www.rachis.paris</a>
   </footer>
 
 </body>
