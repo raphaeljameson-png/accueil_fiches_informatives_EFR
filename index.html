@@ -44,22 +44,43 @@
   }
   .header-content { max-width: 1000px; margin: 0 auto; display: flex; align-items: center; gap: 12px; }
   .header img { width: 50px; height: auto; }
-  .header-text h1 { margin: 0; font-size: 17px; font-weight: 800; color: var(--accent); text-transform: uppercase; letter-spacing: 0.5px; }
-  .header-text p { margin: 0; font-size: 11px; color: var(--muted); font-weight: 600; }
+  .header-text .brand-name { 
+    margin: 0; font-size: 17px; font-weight: 800; color: var(--accent); text-transform: uppercase; letter-spacing: 0.5px; 
+  }
+  .header-text p { 
+    margin: 0; font-size: 11.5px; color: var(--muted); font-weight: 600; 
+  }
 
   .container { max-width: 1000px; margin: 16px auto; padding: 0 12px 40px; }
 
-  /* H1 invisible pour le SEO mais sémantiquement correct */
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border-width: 0;
+  /* Introduction & Noms des médecins */
+  .intro {
+    text-align: center;
+    margin-bottom: 32px;
+    margin-top: 20px;
+  }
+  .intro h1 {
+    margin: 0 0 8px 0;
+    font-size: 24px;
+    color: var(--ink);
+  }
+  .doctors-team {
+    color: var(--accent);
+    font-weight: 800;
+    font-size: 14px;
+    margin-bottom: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 12px;
+  }
+  @media (max-width: 600px) {
+    .doctors-team { font-size: 13px; flex-direction: column; gap: 4px; }
+  }
+  .intro p.desc {
+    margin: 0;
+    color: var(--muted);
+    font-size: 15px;
   }
 
   /* --- DASHBOARD OPTIMISÉ IPHONE --- */
@@ -124,7 +145,10 @@
     margin-bottom: 32px; transition: 0.3s;
   }
   .guide-cta-text { font-weight: 700; font-size: 14px; }
-  .guide-cta .arrow { font-size: 18px; }
+  
+  /* ANIMATION DE LA FLÈCHE DU GUIDE */
+  .guide-cta .arrow { font-size: 18px; transition: transform 0.2s ease; }
+  .guide-cta:hover .arrow, .guide-cta:active .arrow { transform: translateX(4px); }
 
   /* GRILLE DES FICHES */
   .section-title { font-size: 12px; font-weight: 800; text-transform: uppercase; color: var(--muted); margin: 24px 0 12px 4px; letter-spacing: 1px; }
@@ -132,20 +156,31 @@
   @media (min-width: 768px) { .grid { grid-template-columns: 1fr 1fr 1fr; } }
 
   .card { background: #fff; border-radius: 16px; border: 1px solid var(--border); overflow: hidden; display: flex; flex-direction: column; }
-  .card-header { padding: 16px; font-weight: 800; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .card h2.card-header { margin: 0; padding: 16px; font-weight: 800; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
   
   .card-header.cervical { background: #f0f7fa; color: var(--accent); border-bottom: 3px solid var(--accent); }
   .card-header.lombaire { background: #f0fafa; color: #167a7a; border-bottom: 3px solid var(--accent2); }
   .card-header.endoscopie { background: #fef5ed; color: var(--accent4); border-bottom: 3px solid var(--accent4); }
   .card-header.medecine { background: #f5f4ff; color: var(--accent3); border-bottom: 3px solid var(--accent3); }
-  .card-header.reeducation { background: rgba(46, 125, 50, 0.1); color: var(--accent5); border-bottom: 3px solid var(--accent5); } /* Nouveau style Rééducation */
+  .card-header.reeducation { background: rgba(46, 125, 50, 0.1); color: var(--accent5); border-bottom: 3px solid var(--accent5); }
 
+  .links { list-style: none; margin: 0; padding: 0; }
   .links a {
     display: flex; justify-content: space-between; align-items: center;
     padding: 16px; text-decoration: none; color: var(--ink); font-size: 14px; font-weight: 600; border-bottom: 1px solid #f2f2f2;
+    transition: background 0.2s ease;
   }
-  .links a:active { background: #f4f8fb; }
-  .links a span.arrow { color: var(--accent2); font-size: 16px; }
+  .links a:active, .links a:hover { background: #f4f8fb; }
+  
+  /* ANIMATION DE LA FLÈCHE DES LIENS */
+  .links a span.arrow { 
+    color: var(--accent2); 
+    font-size: 16px; 
+    transition: transform 0.2s ease; 
+  }
+  .links a:hover span.arrow, .links a:active span.arrow { 
+    transform: translateX(4px); 
+  }
 
   .full-width { grid-column: 1 / -1; }
   .grid-links { display: grid; grid-template-columns: 1fr; }
@@ -156,20 +191,28 @@
 </head>
 <body>
 
-  <h1 class="sr-only">Espace Patient de l'Espace Francilien du Rachis</h1>
-
   <header class="header">
     <div class="header-content">
-      <img src="logo.png" alt="Logo de l'Espace Francilien du Rachis">
+      <img src="logo.png" alt="Logo Espace Francilien du Rachis">
       <div class="header-text">
-        <div style="margin: 0; font-size: 17px; font-weight: 800; color: var(--accent); text-transform: uppercase; letter-spacing: 0.5px;">Espace Francilien du Rachis</div>
-        <p>Expertise & Accompagnement Patient</p>
+        <div class="brand-name">Espace Francilien du Rachis</div>
+        <p>Dr Jameson · Dr Lamerain · Dr Travert</p>
       </div>
     </div>
   </header>
 
   <main class="container">
     
+    <div class="intro">
+      <h1>Vos fiches d'information patient</h1>
+      <div class="doctors-team">
+        <span>Dr Raphaël JAMESON</span> • 
+        <span>Dr Mayalen LAMERAIN</span> • 
+        <span>Dr Christophe TRAVERT</span>
+      </div>
+      <p class="desc">Sélectionnez l'intervention qui vous concerne pour lire, télécharger ou imprimer votre fiche détaillée.</p>
+    </div>
+
     <div class="dashboard">
       <div class="dashboard-header">
         <h2>🚀 Mon Parcours de Soins</h2>
@@ -267,52 +310,53 @@
       <div class="arrow">→</div>
     </a>
 
-    <h2 class="section-title">Fiches d'Information Médicale</h2>
-    
+    <h2 class="section-title">Documentation Médicale</h2>
     <div class="grid">
+      
       <div class="card">
-        <div class="card-header cervical">Cervical</div>
+        <h2 class="card-header cervical">Cervical</h2>
         <nav class="links">
-          <a href="https://raphaeljameson-png.github.io/fiche-information-ACDF/">Arthrodèse ACDF <span>→</span></a>
-          <a href="https://raphaeljameson-png.github.io/prothese_discale_cervciale/">Prothèse Discale <span>→</span></a>
-          <a href="https://raphaeljameson-png.github.io/dfiche_information_lamiectomie_cervicale/">Canal cervical <span>→</span></a>
+          <a href="https://raphaeljameson-png.github.io/fiche-information-ACDF/">Arthrodèse ACDF <span class="arrow">→</span></a>
+          <a href="https://raphaeljameson-png.github.io/prothese_discale_cervciale/">Prothèse Discale <span class="arrow">→</span></a>
+          <a href="https://raphaeljameson-png.github.io/dfiche_information_lamiectomie_cervicale/">Canal cervical (Voie Post.) <span class="arrow">→</span></a>
         </nav>
       </div>
 
       <div class="card">
-        <div class="card-header lombaire">Lombaire</div>
+        <h2 class="card-header lombaire">Lombaire</h2>
         <nav class="links">
-          <a href="https://raphaeljameson-png.github.io/hernie_discale_lombaire/">Hernie discale <span>→</span></a>
-          <a href="https://raphaeljameson-png.github.io/fiche_information_stenoseminiinvasive/">Sténose Mini-invasif <span>→</span></a>
-          <a href="https://raphaeljameson-png.github.io/fiche_information_lamiectomie_lombaire_open/">Canal Lombaire (Open) <span>→</span></a>
-          <a href="https://raphaeljameson-png.github.io/fiche_informative_ALIF/">Arthrodèse ALIF <span>→</span></a>
-          <a href="https://raphaeljameson-png.github.io/fiche_prothese_discale_lombaire/">Prothèse discale <span>→</span></a>
-          <a href="https://raphaeljameson-png.github.io/fiche_information_arthrodese_lombaire_posterieure/">Arthrodèse post. <span>→</span></a>
-          <a href="https://raphaeljameson-png.github.io/ficheinformation_cimentoplastie_spinejack/">Cimentoplastie <span>→</span></a>
+          <a href="https://raphaeljameson-png.github.io/hernie_discale_lombaire/">Hernie discale <span class="arrow">→</span></a>
+          <a href="https://raphaeljameson-png.github.io/fiche_information_stenoseminiinvasive/">Sténose Mini-invasif <span class="arrow">→</span></a>
+          <a href="https://raphaeljameson-png.github.io/fiche_information_lamiectomie_lombaire_open/">Canal Lombaire (Open) <span class="arrow">→</span></a>
+          <a href="https://raphaeljameson-png.github.io/fiche_informative_ALIF/">Arthrodèse ALIF <span class="arrow">→</span></a>
+          <a href="https://raphaeljameson-png.github.io/fiche_prothese_discale_lombaire/">Prothèse discale <span class="arrow">→</span></a>
+          <a href="https://raphaeljameson-png.github.io/fiche_information_arthrodese_lombaire_posterieure/">Arthrodèse post. (TLIF) <span class="arrow">→</span></a>
+          <a href="https://raphaeljameson-png.github.io/ficheinformation_cimentoplastie_spinejack/">Cimentoplastie / SpineJack <span class="arrow">→</span></a>
         </nav>
       </div>
 
       <div class="card">
-        <div class="card-header endoscopie">Endoscopie</div>
+        <h2 class="card-header endoscopie">Endoscopie</h2>
         <nav class="links">
-          <a href="https://raphaeljameson-png.github.io/fiche_UBE_endoscopie_rachis/">Endoscopie UBE <span>→</span></a>
+          <a href="https://raphaeljameson-png.github.io/fiche_UBE_endoscopie_rachis/">Endoscopie UBE <span class="arrow">→</span></a>
         </nav>
       </div>
 
       <div class="card full-width">
-        <div class="card-header reeducation">Rééducation & Suites Opératoires</div>
+        <h2 class="card-header reeducation">Rééducation & Suites</h2>
         <nav class="links grid-links">
-          <a href="https://raphaeljameson-png.github.io/quelle_reeducation_apres_chirurgie_lombaire/">Guide Rééducation Lombaire <span>→</span></a>
+          <a href="https://raphaeljameson-png.github.io/quelle_reeducation_apres_chirurgie_lombaire/">Guide Rééducation & L'École du Dos <span class="arrow">→</span></a>
         </nav>
       </div>
 
       <div class="card full-width">
-        <div class="card-header medecine">Médecine Interventionnelle</div>
+        <h2 class="card-header medecine">Médecine Interventionnelle</h2>
         <nav class="links grid-links">
-          <a href="https://raphaeljameson-png.github.io/fiche_information_neurolyselombaire/">Neurolyse <span>→</span></a>
-          <a href="https://raphaeljameson-png.github.io/fiche_information_infiltrations/">Infiltrations <span>→</span></a>
+          <a href="https://raphaeljameson-png.github.io/fiche_information_neurolyselombaire/">Neurolyse <span class="arrow">→</span></a>
+          <a href="https://raphaeljameson-png.github.io/fiche_information_infiltrations/">Infiltrations Lombaires <span class="arrow">→</span></a>
         </nav>
       </div>
+      
     </div>
   </main>
 
@@ -341,7 +385,7 @@
 
   <footer>
     95, rue de Prony — 75017 Paris<br>
-    <a href="http://www.rachis.paris" target="_blank" rel="noopener noreferrer" style="color:var(--accent); text-decoration:none; font-weight:bold;">www.rachis.paris</a>
+    <a href="http://www.rachis.paris" target="_blank" style="color:var(--accent); text-decoration:none; font-weight:bold;">www.rachis.paris</a>
   </footer>
 
 </body>
