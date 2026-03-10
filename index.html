@@ -187,6 +187,9 @@
   @media (min-width: 600px) { .grid-links { grid-template-columns: 1fr 1fr; } }
 
   footer { text-align: center; padding: 40px 20px; color: var(--muted); font-size: 12px; border-top: 1px solid var(--border); margin-top: 30px; }
+  
+  /* Style pour le numéro de version */
+  .version-info { margin-top: 15px; font-size: 11px; color: #aaa; }
 </style>
 </head>
 <body>
@@ -402,11 +405,23 @@
       });
       updateProgress(); // Met à jour la jauge au démarrage
     };
+
+    // --- AUTOMATISATION DE LA DATE DE MISE À JOUR ---
+    window.addEventListener('DOMContentLoaded', (event) => {
+      const dateElement = document.getElementById('update-date');
+      const lastModified = new Date(document.lastModified);
+      
+      const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+      const dateFormatee = lastModified.toLocaleDateString('fr-FR', options);
+      
+      dateElement.innerText = "Dernière mise à jour : " + dateFormatee.replace(':', 'h');
+    });
   </script>
 
   <footer>
     95, rue de Prony — 75017 Paris<br>
     <a href="http://www.rachis.paris" target="_blank" rel="noopener noreferrer" style="color:var(--accent); text-decoration:none; font-weight:bold;">www.rachis.paris</a>
+    <div class="version-info" id="update-date">Mise à jour en cours...</div>
   </footer>
 
 </body>
